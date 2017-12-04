@@ -329,20 +329,6 @@ public class PlayerListener implements Listener
 		}
 	}
 
-	// Disallow teleportation in arenas
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-	public void onPlayerTeleport(PlayerTeleportEvent event)
-	{
-		if (event.getCause() == TeleportCause.COMMAND)
-		{
-			ArenaPlayer ap = plugin.getArenaPlayer(event.getPlayer());
-			if (ap != null)
-			{
-				ap.sendMessage(plugin.getMessage("teleportInArena"));
-				event.setCancelled(true);
-			}
-		}
-	}
 
 	// Block non-UA non-whitelisted commands in arenas
 	@EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
